@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecciona tu Aventura - Consciencia de Abundancia</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/games.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="games-page">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-coins"></i>
+                <span>Consciencia de Abundancia</span>
+            </div>
+            <div class="nav-menu">
+                <span class="user-welcome" id="userWelcome">¡Hola, Usuario!</span>
+                <button class="btn btn-small" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Salir
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Progress Header -->
+    <section class="progress-header">
+        <div class="container">
+            <div class="progress-info">
+                <h1>Tu Viaje de Consciencia</h1>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p class="progress-text">
+                    <span id="completedGames">0</span> de 30 experiencias completadas
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Categories -->
+    <section class="game-categories">
+        <div class="container">
+            <div class="categories-grid">
+                <div class="category-card" data-category="energia">
+                    <div class="category-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Energía y Vibración</h3>
+                    <p>Juegos que exploran tu energía con el dinero</p>
+                    <span class="category-count" data-category="energia">0/8 completados</span>
+                </div>
+                
+                <div class="category-card" data-category="creencias">
+                    <div class="category-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Creencias y Patrones</h3>
+                    <p>Descubre y transforma tus creencias limitantes</p>
+                    <span class="category-count" data-category="creencias">0/8 completados</span>
+                </div>
+                
+                <div class="category-card" data-category="recepcion">
+                    <div class="category-icon">
+                        <i class="fas fa-hands"></i>
+                    </div>
+                    <h3>Capacidad de Recibir</h3>
+                    <p>Expande tu habilidad para recibir abundancia</p>
+                    <span class="category-count" data-category="recepcion">0/7 completados</span>
+                </div>
+                
+                <div class="category-card" data-category="accion">
+                    <div class="category-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Acción y Creación</h3>
+                    <p>Juegos sobre crear y manifestar abundancia</p>
+                    <span class="category-count" data-category="accion">0/7 completados</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Grid -->
+    <section class="games-grid">
+        <div class="container">
+            <div class="games-header">
+                <h2>Experiencias Disponibles</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Todas</button>
+                    <button class="filter-btn" data-filter="energia">Energía</button>
+                    <button class="filter-btn" data-filter="creencias">Creencias</button>
+                    <button class="filter-btn" data-filter="recepcion">Recepción</button>
+                    <button class="filter-btn" data-filter="accion">Acción</button>
+                </div>
+            </div>
+            
+            <div class="games-container" id="gamesContainer">
+                <!-- Games will be dynamically generated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievement Modal -->
+    <div class="modal" id="achievementModal">
+        <div class="modal-content achievement-content">
+            <div class="achievement-icon">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <h3>¡Logro Desbloqueado!</h3>
+            <p id="achievementText"></p>
+            <button class="btn btn-primary" onclick="closeAchievementModal()">
+                ¡Continuar!
+            </button>
+        </div>
+    </div>
+
+    <script src="js/questions.js"></script>
+    <script src="js/games.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

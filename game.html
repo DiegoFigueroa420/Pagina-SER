@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiencia de Consciencia - Consciencia de Abundancia</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/games.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="game-page">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="games.html">
+                    <i class="fas fa-arrow-left"></i>
+                    Volver a Experiencias
+                </a>
+            </div>
+            <div class="nav-menu">
+                <span class="game-timer" id="gameTimer">00:00</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Game Container -->
+    <div class="game-container">
+        <div class="game-header">
+            <h1 id="gameTitle">Cargando Experiencia...</h1>
+            <div class="game-info">
+                <span class="game-category" id="gameCategory"></span>
+                <div class="game-difficulty" id="gameDifficulty"></div>
+            </div>
+        </div>
+
+        <!-- Game Area -->
+        <div class="game-area" id="gameArea">
+            <!-- Game content will be dynamically generated here -->
+        </div>
+
+        <!-- Game Controls -->
+        <div class="game-controls" id="gameControls">
+            <button class="btn btn-secondary" onclick="resetGame()">
+                <i class="fas fa-redo"></i>
+                Reiniciar
+            </button>
+            <button class="btn btn-primary" id="submitBtn" onclick="submitGame()" disabled>
+                <i class="fas fa-check"></i>
+                Completar
+            </button>
+        </div>
+    </div>
+
+    <!-- Question Modal -->
+    <div class="modal" id="questionModal">
+        <div class="modal-content question-content">
+            <div class="question-header">
+                <i class="fas fa-lightbulb"></i>
+                <h2>Pregunta de Consciencia</h2>
+            </div>
+            <div class="question-text" id="questionText">
+                <!-- Question will be inserted here -->
+            </div>
+            <div class="question-reflection">
+                <p>Tómate un momento para reflexionar sobre esta pregunta...</p>
+                <textarea id="reflectionText" placeholder="Escribe tus reflexiones aquí (opcional)..."></textarea>
+            </div>
+            <div class="question-buttons">
+                <button class="btn btn-secondary" onclick="skipReflection()">
+                    Continuar sin escribir
+                </button>
+                <button class="btn btn-primary" onclick="saveReflection()">
+                    <i class="fas fa-save"></i>
+                    Guardar Reflexión
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content success-content">
+            <div class="success-animation">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <h2>¡Experiencia Completada!</h2>
+            <p>Has expandido tu consciencia sobre la abundancia.</p>
+            <div class="success-stats">
+                <div class="stat">
+                    <span class="stat-label">Tiempo:</span>
+                    <span class="stat-value" id="completionTime">00:00</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Experiencias completadas:</span>
+                    <span class="stat-value" id="totalCompleted">1</span>
+                </div>
+            </div>
+            <div class="success-buttons">
+                <button class="btn btn-secondary" onclick="goToGames()">
+                    Ver todas las experiencias
+                </button>
+                <button class="btn btn-primary" onclick="nextGame()">
+                    Siguiente experiencia
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/questions.js"></script>
+    <script src="js/gameEngine.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
