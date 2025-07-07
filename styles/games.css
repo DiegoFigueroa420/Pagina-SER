@@ -1088,61 +1088,956 @@
     to { transform: translateY(-10px); }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* Variables CSS Responsivas */
+:root {
+    --container-padding: clamp(1rem, 4vw, 2rem);
+    --section-spacing: clamp(2rem, 6vw, 4rem);
+    --card-gap: clamp(1rem, 3vw, 2rem);
+    --border-radius: clamp(0.5rem, 1vw, 1rem);
+    --font-size-responsive: clamp(0.875rem, 2.5vw, 1.125rem);
+    --font-size-title: clamp(1.5rem, 4vw, 2.5rem);
+    --font-size-heading: clamp(1.25rem, 3vw, 1.875rem);
+    --header-height: clamp(60px, 12vw, 80px);
+}
+
+/* Responsive Design Mejorado */
+
+/* Extra Large Devices (1400px and up) */
+@media (min-width: 1400px) {
     .categories-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(4, 1fr);
     }
     
     .games-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .modal-content {
+        max-width: 700px;
+    }
+}
+
+/* Large Devices (1200px and up) */
+@media (min-width: 1200px) {
+    .categories-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .games-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .memory-game {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 500px;
+    }
+    
+    .slider-container {
+        max-width: 450px;
+    }
+}
+
+/* Medium Devices (992px and up) */
+@media (min-width: 992px) {
+    .progress-header {
+        min-height: 50vh;
+    }
+    
+    .categories-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .games-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .matching-game {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-xl);
+    }
+    
+    .game-info {
+        flex-direction: row;
+        gap: var(--spacing-lg);
+    }
+}
+
+/* Small to Medium Devices (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .games-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .memory-game {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 400px;
+    }
+    
+    .matching-game {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .filter-buttons {
+        justify-content: center;
+        gap: var(--spacing-sm);
+    }
+    
+    .game-controls {
+        flex-direction: row;
+        justify-content: center;
+        gap: var(--spacing-md);
+    }
+}
+
+/* Tablets (768px and down) */
+@media (max-width: 768px) {
+    .progress-header {
+        min-height: 40vh;
+        padding: calc(var(--header-height) + var(--spacing-md)) var(--spacing-md) var(--spacing-lg);
+    }
+    
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    .games-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--spacing-md);
     }
     
     .matching-game {
         grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .matching-game::before {
+        display: none;
     }
     
     .memory-game {
         grid-template-columns: repeat(3, 1fr);
+        max-width: 350px;
     }
     
     .modal-content {
         padding: var(--spacing-lg);
         margin: var(--spacing-md);
+        max-width: 90vw;
     }
     
     .question-text {
-        font-size: var(--font-size-lg);
+        font-size: var(--font-size-responsive);
+        padding: var(--spacing-md);
     }
     
     .filter-buttons {
         justify-content: flex-start;
         overflow-x: auto;
-        padding-bottom: var(--spacing-sm);
+        padding: 0 var(--spacing-sm) var(--spacing-sm);
+        scrollbar-width: thin;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .filter-buttons::-webkit-scrollbar {
+        height: 4px;
+    }
+    
+    .filter-buttons::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 2px;
+    }
+    
+    .filter-buttons::-webkit-scrollbar-thumb {
+        background: var(--gold-primary);
+        border-radius: 2px;
     }
     
     .game-info {
         flex-direction: column;
         gap: var(--spacing-sm);
     }
+    
+    .game-category-tag {
+        font-size: var(--font-size-sm);
+    }
+    
+    .category-icon {
+        width: clamp(50px, 12vw, 70px);
+        height: clamp(50px, 12vw, 70px);
+        font-size: clamp(1.2rem, 3vw, 1.8rem);
+    }
+    
+    .success-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
+/* Mobile Devices (480px and down) */
 @media (max-width: 480px) {
+    .progress-header {
+        min-height: 35vh;
+        padding: calc(var(--header-height) + var(--spacing-sm)) var(--spacing-sm) var(--spacing-md);
+    }
+    
+    .categories-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .games-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .game-card {
+        min-height: 220px;
+    }
+    
+    .game-header-img {
+        height: clamp(80px, 18vw, 100px);
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
+    }
+    
+    .game-content {
+        padding: var(--spacing-md);
+    }
+    
+    .game-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+    
     .game-controls {
         flex-direction: column;
         align-items: center;
+        gap: var(--spacing-sm);
     }
     
     .success-buttons,
     .question-buttons {
         flex-direction: column;
+        gap: var(--spacing-sm);
     }
     
     .slider-container {
         grid-template-columns: repeat(2, 1fr);
+        max-width: 280px;
     }
     
     .memory-game {
         grid-template-columns: repeat(2, 1fr);
+        max-width: 250px;
+        gap: var(--spacing-sm);
+    }
+    
+    .matching-item {
+        padding: var(--spacing-md);
+        font-size: var(--font-size-sm);
+    }
+    
+    .word-input {
+        font-size: var(--font-size-responsive);
+        padding: var(--spacing-md);
+    }
+    
+    .puzzle-word {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        letter-spacing: 0.1em;
+    }
+    
+    .category-card {
+        min-height: 180px;
+        padding: var(--spacing-lg);
+    }
+    
+    .category-icon {
+        width: clamp(40px, 10vw, 60px);
+        height: clamp(40px, 10vw, 60px);
+        font-size: clamp(1rem, 2.5vw, 1.5rem);
+    }
+    
+    .modal-content {
+        padding: var(--spacing-md);
+        margin: var(--spacing-sm);
+        max-width: 95vw;
+        max-height: 90vh;
+    }
+    
+    .question-reflection textarea {
+        min-height: 120px;
+        padding: var(--spacing-md);
+    }
+    
+    .success-stats {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .stat-value {
+        font-size: var(--font-size-heading);
+    }
+    
+    .filter-btn {
+        font-size: var(--font-size-sm);
+        padding: var(--spacing-xs) var(--spacing-md);
+    }
+}
+
+/* Very Small Devices (320px and down) */
+@media (max-width: 320px) {
+    .progress-header {
+        min-height: 30vh;
+    }
+    
+    .game-card {
+        min-height: 200px;
+    }
+    
+    .game-header-img {
+        height: 70px;
+        font-size: 1.2rem;
+    }
+    
+    .category-card {
+        min-height: 150px;
+        padding: var(--spacing-md);
+    }
+    
+    .category-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .memory-game {
+        max-width: 220px;
+    }
+    
+    .slider-container {
+        max-width: 200px;
+    }
+    
+    .modal-content {
+        padding: var(--spacing-sm);
+    }
+}
+
+/* Landscape Orientation for Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .progress-header {
+        min-height: 60vh;
+    }
+    
+    .categories-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .games-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .game-controls {
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .success-buttons,
+    .question-buttons {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .game-card:hover,
+    .category-card:hover,
+    .memory-card:hover,
+    .matching-item:hover {
+        transform: none;
+    }
+    
+    .game-card:active,
+    .category-card:active {
+        transform: scale(0.98);
+    }
+    
+    .filter-btn,
+    .memory-card,
+    .matching-item,
+    .slider-tile {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .difficulty-star {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .game-card.completed::after {
+        width: 42px;
+        height: 42px;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .game-card::before,
+    .category-card::before,
+    .memory-card::before,
+    .matching-item::before {
+        display: none;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .progress-bar {
+        background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .word-input {
+        background: rgba(255, 255, 255, 0.08);
+    }
+    
+    .result-words {
+        background: rgba(255, 255, 255, 0.08);
+    }
+}
+
+/* Container Queries Support (Progressive Enhancement) */
+@supports (container-type: inline-size) {
+    .games-container {
+        container-type: inline-size;
+    }
+    
+    @container (max-width: 600px) {
+        .game-card {
+            min-height: 200px;
+        }
+    }
+    
+    @container (max-width: 400px) {
+        .game-card {
+            min-height: 180px;
+        }
+    }
+}
+/* Mejoras específicas para dispositivos móviles */
+
+/* Variables responsivas mejoradas */
+:root {
+    --mobile-spacing: clamp(0.5rem, 2vw, 1rem);
+    --mobile-font-size: clamp(0.75rem, 3vw, 1rem);
+    --mobile-title-size: clamp(1.2rem, 5vw, 1.8rem);
+    --mobile-card-size: clamp(60px, 15vw, 80px);
+    --mobile-touch-target: 44px; 
+}
+
+.slider-puzzle {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--mobile-spacing);
+    position: relative;
+}
+
+.slider-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(2px, 1vw, 4px);
+    aspect-ratio: 1;
+    background: var(--bg-secondary);
+    padding: clamp(4px, 2vw, 8px);
+    border-radius: var(--radius-md);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    width: min(80vw, 350px);
+    margin: 0 auto;
+}
+
+.slider-tile {
+    background: var(--gradient-gold);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    font-weight: bold;
+    color: var(--bg-primary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-height: var(--mobile-touch-target);
+    min-width: var(--mobile-touch-target);
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .slider-container {
+        width: min(60vw, 400px);
+        gap: 6px;
+        padding: 8px;
+    }
+    
+    .slider-tile {
+        font-size: 1.2rem;
+        min-height: 50px;
+        min-width: 50px;
+    }
+    
+    .puzzle-word {
+        font-size: 1.8rem;
+    }
+    
+    .memory-game {
+        max-width: 400px;
+        gap: var(--spacing-sm);
+    }
+    
+    .matching-game {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-md);
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .slider-container {
+        width: min(70vw, 350px);
+        gap: 4px;
+        padding: 6px;
+    }
+    
+    .slider-tile {
+        font-size: 1.1rem;
+        min-height: 46px;
+        min-width: 46px;
+    }
+    
+    .memory-game {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 320px;
+        gap: var(--spacing-xs);
+    }
+    
+    .matching-game {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .matching-game::before {
+        display: none;
+    }
+    
+    .games-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+}
+
+@media (min-width: 376px) and (max-width: 480px) {
+    .slider-container {
+        width: min(85vw, 300px);
+        gap: 3px;
+        padding: 5px;
+    }
+    
+    .slider-tile {
+        font-size: 1rem;
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .memory-game {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 280px;
+        gap: var(--spacing-xs);
+    }
+    
+    .memory-card {
+        min-height: 60px;
+        min-width: 60px;
+        font-size: 1.2rem;
+    }
+    
+    .games-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .game-card {
+        min-height: 200px;
+    }
+    
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+    
+    .progress-header {
+        min-height: 35vh;
+        padding: calc(var(--header-height) + var(--spacing-sm)) var(--spacing-sm) var(--spacing-md);
+    }
+    
+    .puzzle-word {
+        font-size: 1.5rem;
+        letter-spacing: 0.1em;
+    }
+    
+    .word-input {
+        font-size: 1rem;
+        padding: var(--spacing-md);
+        max-width: 90%;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 375px) {
+    .slider-container {
+        width: min(90vw, 260px);
+        gap: 2px;
+        padding: 4px;
+    }
+    
+    .slider-tile {
+        font-size: 0.9rem;
+        min-height: 42px;
+        min-width: 42px;
+    }
+    
+    .memory-game {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 240px;
+        gap: 4px;
+    }
+    
+    .memory-card {
+        min-height: 55px;
+        min-width: 55px;
+        font-size: 1rem;
+    }
+    
+    .puzzle-word {
+        font-size: 1.3rem;
+    }
+    
+    .word-input {
+        font-size: 0.9rem;
+        padding: var(--spacing-sm);
+        max-width: 95%;
+    }
+    
+    .categories-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .category-card {
+        min-height: 150px;
+        padding: var(--spacing-md);
+    }
+    
+    .category-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .modal-content {
+        padding: var(--spacing-sm);
+        margin: var(--spacing-xs);
+        max-width: 95vw;
+    }
+    
+    .question-text {
+        font-size: 0.9rem;
+        padding: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 319px) {
+    .slider-container {
+        width: 95vw;
+        max-width: 240px;
+        gap: 1px;
+        padding: 3px;
+    }
+    
+    .slider-tile {
+        font-size: 0.8rem;
+        min-height: 40px;
+        min-width: 40px;
+    }
+    
+    .memory-game {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 200px;
+        gap: 3px;
+    }
+    
+    .memory-card {
+        min-height: 50px;
+        min-width: 50px;
+        font-size: 0.9rem;
+    }
+    
+    .puzzle-word {
+        font-size: 1.2rem;
+    }
+    
+    .word-input {
+        font-size: 0.8rem;
+        padding: var(--spacing-xs);
+    }
+    
+    .game-header-img {
+        height: 60px;
+        font-size: 1rem;
+    }
+    
+    .category-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 767px) and (orientation: landscape) {
+    .slider-container {
+        width: min(50vh, 300px);
+    }
+    
+    .memory-game {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 50vh;
+    }
+    
+    .progress-header {
+        min-height: 80vh;
+        padding: calc(var(--header-height) + var(--spacing-sm)) var(--spacing-sm) var(--spacing-md);
+    }
+    
+    .categories-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .games-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .modal-content {
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .slider-tile:hover {
+        transform: none;
+    }
+    
+    .slider-tile:active {
+        transform: scale(0.95);
+        background: var(--gradient-abundance);
+    }
+    
+    .memory-card:hover {
+        transform: none;
+    }
+    
+    .memory-card:active {
+        transform: scale(0.95);
+    }
+    
+    .game-card:hover {
+        transform: none;
+    }
+    
+    .game-card:active {
+        transform: scale(0.98);
+    }
+    
+    .category-card:hover {
+        transform: none;
+    }
+    
+    .category-card:active {
+        transform: scale(0.98);
+    }
+    
+    .filter-btn,
+    .matching-item,
+    .puzzle-piece {
+        min-height: var(--mobile-touch-target);
+        min-width: var(--mobile-touch-target);
+    }
+}
+
+@media (max-width: 480px) {
+    .game-title {
+        font-size: var(--mobile-title-size);
+        line-height: 1.3;
+    }
+    
+    .game-description {
+        font-size: var(--mobile-font-size);
+        line-height: 1.4;
+    }
+    
+    .game-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+    
+    .game-category-tag {
+        font-size: var(--mobile-font-size);
+    }
+    
+    .progress-text {
+        font-size: var(--mobile-font-size);
+    }
+    
+    .filter-buttons {
+        gap: var(--spacing-xs);
+        padding: 0 var(--spacing-xs);
+    }
+    
+    .filter-btn {
+        font-size: var(--mobile-font-size);
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .matching-item {
+        padding: var(--spacing-sm);
+        font-size: var(--mobile-font-size);
+    }
+    
+    .matching-column h4 {
+        font-size: var(--mobile-title-size);
+    }
+    
+    .word-hint {
+        padding: var(--spacing-sm);
+        font-size: var(--mobile-font-size);
+    }
+    
+    .puzzle-piece {
+        padding: var(--spacing-sm);
+        margin: var(--spacing-xs);
+        font-size: var(--mobile-font-size);
+    }
+    
+    .result-words {
+        padding: var(--spacing-sm);
+        min-height: 50px;
+    }
+    
+    .result-word {
+        font-size: var(--mobile-font-size);
+        padding: var(--spacing-xs);
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        max-width: 95vw;
+        max-height: 90vh;
+        margin: var(--spacing-xs);
+        padding: var(--spacing-md);
+    }
+    
+    .question-text {
+        font-size: var(--mobile-font-size);
+        line-height: 1.5;
+        padding: var(--spacing-sm);
+    }
+    
+    .question-reflection textarea {
+        min-height: 100px;
+        padding: var(--spacing-sm);
+        font-size: var(--mobile-font-size);
+    }
+    
+    .success-buttons,
+    .question-buttons {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+    
+    .success-stats {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .stat-value {
+        font-size: var(--mobile-title-size);
+    }
+    
+    .stat-label {
+        font-size: var(--mobile-font-size);
+    }
+}
+
+@media (max-width: 768px) {
+    .game-card::before,
+    .category-card::before,
+    .memory-card::before,
+    .matching-item::before,
+    .slider-container::before {
+        display: none;
+    }
+    
+    .game-card:hover .game-header-img i,
+    .category-card:hover .category-icon {
+        transform: none;
+    }
+    
+    .game-card,
+    .category-card,
+    .memory-card,
+    .matching-item {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@media (max-width: 480px) {
+    .difficulty-star {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .difficulty-star.active {
+        filter: brightness(1.2);
+    }
+    
+    .game-card.completed::after {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    
+    .game-controls {
+        gap: var(--spacing-md);
+        padding: var(--spacing-sm) 0;
     }
 }
